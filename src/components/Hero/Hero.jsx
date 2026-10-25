@@ -5,7 +5,7 @@ function Hero() {
     <div className="relative w-full h-[600px] rounded-2xl overflow-hidden">
       {/* Poster */}
       <img
-        src="/images/interstellar_poster.webp"
+        src="https://image.tmdb.org/t/p/original/r08LxMJCbf1SiJIWeyH9aJmdqwC.jpg"
         alt="Interstellar Poster"
         className="w-full h-full object-cover"
       />

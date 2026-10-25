@@ -1,7 +1,7 @@
 import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
 
-function MoviesSection({ movies, title }) {
+function MoviesSection({ movies, title, error, loading }) {
   return (
     <>
       <div className="mt-10 pb-20 md:pb-0">
@@ -13,18 +13,25 @@ function MoviesSection({ movies, title }) {
             <i className="fa-solid fa-arrow-right"></i>
           </a>
         </div>
+        {loading && <p className="text-[#F8FAFC]">Loading ...</p>}
+
+        {!loading && error && (
+          <p className="text-red-500">Failed to load: {error}</p>
+        )}
         <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mt-4">
-          {movies.map((movie) => {
-            return (
-              <MovieCard
-                key={movie.id}
-                title={movie.title}
-                poster={movie.poster}
-                year={movie.year}
-                rate={movie.rate}
-              />
-            );
-          })}
+          {!loading &&
+            !error &&
+            movies.map((movie) => {
+              return (
+                <MovieCard
+                  key={movie.id}
+                  title={movie.title}
+                  poster={movie.poster}
+                  year={movie.year}
+                  rate={movie.rate}
+                />
+              );
+            })}
         </div>
       </div>
     </>

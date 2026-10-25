@@ -1,6 +1,6 @@
 import React from "react";
 
-function MovieCard({ title, poster, year, rate }) {
+function MovieCard({ title, poster, year, rate}) {
   return (
     <div className="w-full">
       <div className="aspect-[2/3] overflow-hidden rounded-lg">
@@ -16,14 +16,12 @@ function MovieCard({ title, poster, year, rate }) {
       )}
 
       <div className="text-[#949BAD]">
-        {year && rate && (
-          <div className="text-[#949BAD]">
-            {year} ·{" "}
-            <span className="text-[#22D3EE]">
-              {rate} <i className="fa-solid fa-star"></i>
-            </span>
-          </div>
-        )}
+        <div className="text-[#949BAD]">
+          {year} ·{" "}
+          <span className="text-[#22D3EE]">
+            {rate} <i className="fa-solid fa-star"></i>
+          </span>
+        </div>
       </div>
     </div>
   );
