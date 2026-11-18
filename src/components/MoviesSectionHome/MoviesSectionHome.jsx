@@ -1,0 +1,43 @@
+import React from "react";
+import MovieCard from "../MovieCard/MovieCard";
+import { Link } from "react-router-dom";
+
+function MoviesSectionHome({ movies, title, error, loading , linkTo}) {
+  return (
+    <>
+      <div className="mt-10">
+        <div className="flex justify-between">
+          <h2 className="text-xl text-[#F8FAFC] font-bold"> {title} </h2>
+
+          <Link to={linkTo} className="text-[#22D3EE] flex gap-2 items-center">
+            View all
+            <i className="fa-solid fa-arrow-right"></i>
+          </Link>
+        </div>
+        {loading && <p className="text-[#F8FAFC]">Loading ...</p>}
+
+        {!loading && error && (
+          <p className="text-red-500">Failed to load: {error}</p>
+        )}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mt-4">
+          {!loading &&
+            !error &&
+            movies.slice(0, 6).map((movie) => {
+              return (
+                <MovieCard
+                  key={movie.id}
+                  id={movie.id}
+                  title={movie.title}
+                  poster={movie.poster}
+                  year={movie.year}
+                  rate={movie.rate}
+                />
+              );
+            })}
+        </div>
+      </div>
+    </>
+  );
+}
+
+export default MoviesSectionHome;

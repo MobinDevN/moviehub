@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -15,7 +16,7 @@ function Hero() {
         alt="Interstellar Poster"
         className="w-full h-full object-cover md:hidden"
       />
-      
+
       {/* Gradient */}
       <div className="absolute inset-0 bg-linear-to-t from-[#151925] via-[#151925]/60 to-transparent" />
 
@@ -32,9 +33,12 @@ function Hero() {
 
         {/* Btns */}
         <div className="mt-3 flex gap-2">
-          <button className="bg-[#8B5CF6] py-3 px-5 rounded-2xl text-white cursor-pointer">
+          <Link
+            to="/movies"
+            className="bg-[#8B5CF6] py-3 px-5 rounded-2xl text-white cursor-pointer"
+          >
             Explore Movies
-          </button>
+          </Link>
 
           <button className="bg-transparent border-[#949BAD] border-1 py-3 px-5 rounded-2xl text-white cursor-pointer">
             View Favorites

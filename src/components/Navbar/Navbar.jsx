@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
@@ -14,54 +15,34 @@ function Navbar() {
           </div>
 
           <div className="hidden md:block">
-            <ul className="flex gap-5 text-[#F8FAFC] text-md">
+            <ul className="flex gap-5 text-[#F8FAFC] text-base">
               <li>
-                <a
-                  href="#"
-                  className="hover:text-[#22D3EE] transition-all duration-200 hover:underline"
-                >
-                  Home
-                </a>
+                <Link className="hover:text-[#22D3EE] transition-all duration-200 hover:underline" to="/">Home</Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="hover:text-[#22D3EE] transition-all duration-200 hover:underline"
-                >
-                  Movies
-                </a>
+                <Link className="hover:text-[#22D3EE] transition-all duration-200 hover:underline" to="/movies">Popular Movies</Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="hover:text-[#22D3EE] transition-all duration-200 hover:underline"
-                >
-                  Search
-                </a>
+                <Link className="hover:text-[#22D3EE] transition-all duration-200 hover:underline" to="/movies/top-rated">Top Rated Movies</Link>
               </li>
               <li>
-                <a
-                  href="#"
-                  className="hover:text-[#22D3EE] transition-all duration-200 hover:underline"
-                >
-                  Newest Movies
-                </a>
+                <Link className="hover:text-[#22D3EE] transition-all duration-200 hover:underline" to="/about">About</Link>
               </li>
             </ul>
           </div>
         </div>
 
         {/* CTA */}
-        <div className="hidden md:block">
+        <div className="hidden md:flex">
           <button className="p-2 text-[#F8FAFC] text-lg cursor-pointer">
             <i className="fa-regular fa-heart"></i>
           </button>
 
-          <button className="p-2 text-[#F8FAFC] text-lg cursor-pointer">
+          <button className="p-2 text-[#F8FAFC] text-lg cursor-pointer mr-2">
             <i className="fa-solid fa-magnifying-glass"></i>
           </button>
 
-          <button className="p-2 text-[#F8FAFC] bg-[#8B5CF6] text-md rounded-md cursor-pointer">
+          <button className="p-2 text-[#F8FAFC] bg-[#8B5CF6] text-md rounded-md cursor-pointer flex justify-center items-center gap-2">
             <i className="fa-solid fa-arrow-right-to-bracket"></i>
             Login | Register
           </button>

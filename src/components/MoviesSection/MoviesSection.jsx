@@ -1,30 +1,27 @@
 import React from "react";
 import MovieCard from "../MovieCard/MovieCard";
+import { Link } from "react-router-dom";
 
 function MoviesSection({ movies, title, error, loading }) {
   return (
     <>
-      <div className="mt-10 pb-20 md:pb-0">
+      <div className="mt-5 p-4 md:p-8">
         <div className="flex justify-between">
-          <h2 className="text-xl text-[#F8FAFC] font-bold"> {title} </h2>
-
-          <a href="#" className="text-[#22D3EE] flex gap-2 items-center">
-            View all
-            <i className="fa-solid fa-arrow-right"></i>
-          </a>
+          <h1 className="text-4xl text-[#F8FAFC] font-bold"> {title} </h1>
         </div>
         {loading && <p className="text-[#F8FAFC]">Loading ...</p>}
 
         {!loading && error && (
           <p className="text-red-500">Failed to load: {error}</p>
         )}
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mt-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-5 mt-8">
           {!loading &&
             !error &&
             movies.map((movie) => {
               return (
                 <MovieCard
                   key={movie.id}
+                  id={movie.id}
                   title={movie.title}
                   poster={movie.poster}
                   year={movie.year}

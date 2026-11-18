@@ -1,54 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
 import Footer from "./components/Footer/Footer";
-import MoviesSection from "./components/MoviesSection/MoviesSection";
-import { fetchMovies } from "./services/movieApi";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home";
+import About from "./pages/About/About";
+import Movies from "./pages/Movies/Movies";
+import TopRatedMovies from "./pages/Movies/top-rated";
+import Movie from "./pages/Movie/Movie";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
-  const [popularLoading, setPopularLoading] = useState(true);
-  const [popularError, setPopularError] = useState("");
-  const [popularMovies, setPopularMovies] = useState([]);
-
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
-  const [topRatedLoading, setTopRatedLoading] = useState(true);
-  const [topRatedError, setTopRatedError] = useState("");
-
-  useEffect(() => {
-    fetchMovies("/movie/popular")
-      .then(setPopularMovies)
-      .catch((err) => setPopularError(err.message))
-      .finally(() => setPopularLoading(false));
-
-    fetchMovies("/movie/top_rated")
-      .then(setTopRatedMovies)
-      .catch((err) => setTopRatedError(err.message))
-      .finally(() => setTopRatedLoading(false));
-  }, []);
-
   return (
     <>
       <Navbar />
-
-      <div className="p-4 md:p-8">
-        <Hero />
-
-        {/* Popular Movies */}
-        <MoviesSection
-          movies={popularMovies}
-          title="Popular Movies"
-          loading={popularLoading}
-          error={popularError}
-        />
-
-        {/* Top Rated Movies */}
-        <MoviesSection
-          movies={topRatedMovies}
-          title="Top Rated Movies"
-          loading={topRatedLoading}
-          error={topRatedError}
-        />
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/movies/top-rated" element={<TopRatedMovies />} />
+        <Route path="/movie/:id" element={<Movie />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
       <Footer />
     </>

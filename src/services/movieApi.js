@@ -18,7 +18,7 @@ export async function fetchMovies(endpoint) {
 
   const data = await res.json();
 
-  return data.results.slice(0, 6).map((movie) => ({
+  return data.results.map((movie) => ({
     id: movie.id,
     title: movie.title,
     year: movie.release_date ? movie.release_date.slice(0, 4) : "N/A",
